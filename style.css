@@ -1,0 +1,194 @@
+:root {
+    --pl1: #40513B;
+    --pl2: #609966;
+    --pl3: #9DC08B;
+    --pl4: #EDF1D6;
+    --pl5: #fefffa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--pl1);
+}
+
+.container { 
+    position: relative;
+    width: 400px;
+    height: 105px;
+    background: var(--pl4);
+    padding: 28px 32px;
+    overflow: hidden;
+    border-radius: 18px;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.6s ease-out;
+}
+
+.pesquisa-campo {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pesquisa-campo input {
+    color: var(--pl1);
+    background: var(--pl4);
+    width: 80%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 32px;
+}
+
+.pesquisa-campo input::placeholder {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--pl1);
+    text-transform: capitalize;
+}
+
+.pesquisa-campo button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: var(--pl1);
+    background: var(--pl5);
+    border-radius: 50%;
+    font-size: 1.375rem;
+    transform: 0.4s ease;
+}
+
+.pesquisa-campo button:hover {
+    color: var(--pl4);
+    background-color: var(--pl1);
+}
+
+.pesquisa-campo i {
+    position: absolute;
+    color: var(--pl1);
+    font-size: 1.75rem;
+}
+
+.clima-container {
+    text-align: center;
+}
+
+.clima-container img {
+    width: 60%; 
+    margin-top: 30px;
+}
+
+.clima-container .temperatura {
+    position: relative;
+    color: var(--pl1);
+    font-size: 4rem;
+    font-weight: 800;
+    margin-top: 30px;
+    margin-left: -16px;
+}
+
+.clima-container .temperatura span {
+    position: absolute;
+    margin-left: 4px;
+    font-size: 1.5rem;
+}
+
+.clima-container .descricao {
+    color: var(--pl1);
+    font-size: 1.375rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.clima-detalhes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.clima-detalhes .humidade, .clima-detalhes .vento {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100px;
+}
+
+.clima-detalhes .humidade  {
+    padding-left: 20px;
+    justify-content: flex-start;
+}
+
+.clima-detalhes .vento {
+    padding-right: 20px;
+    justify-content: flex-end;    
+}
+
+.clima-detalhes i {
+    color: var(--pl1);
+    font-size: 1.625rem;
+    margin-right: 10px;
+    margin-top: 6px;
+}
+
+.clima-detalhes span {
+    color: var(--pl1);
+    font-size: 1.375rem;
+    font-weight: 500;
+}
+
+.clima-detalhes p {
+    color: var(--pl1);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.nao-localizado {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    scale: 0;
+    opacity: 0;
+    display: none;
+}
+
+
+.nao-localizado img {
+    width: 70%;
+}
+
+.nao-localizado p {
+    color: var(--pl1);
+    font-size: 1.375rem;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.clima-container, .clima-detalhes {
+    scale: 0;
+    opacity: 0;
+}
+
+.fade-in {
+    animation: 0.5s fadeIn forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
