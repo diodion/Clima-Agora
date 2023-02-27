@@ -6,71 +6,71 @@ const error404 = document.querySelector(".nao-localizado");
 
 pesquisa.addEventListener("click", () => {
 
-    const APIKey = "3c7c900730f3476903e64daadd6fcaf7";
-    const city = document.querySelector(".pesquisa-campo input").Value;
+    const APIKey = '3c7c900730f3476903e64daadd6fcaf7';
+    const city = document.querySelector(".pesquisa-campo input").value;
 
-    if (city === '') 
+    if (city === '')
         return;
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}')
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
         .then(response => response.json())
         .then(json => {
 
-        if(json.code === '404'){
-            container.style.height = '400px';
-            climaBox.style.display = 'none';
-            climaDetalhes.style.display = 'none';
-            error404.style.display = 'block';
-            error404.classList.add('fadeIn');
-            return;
-        }
+            if (json.cod === '404') {
+                container.style.height = '500px';
+                climaBox.style.display = 'none';
+                climaDetalhes.style.display = 'none';
+                error404.style.display = 'block';
+                error404.classList.add('fadeIn');
+                return;
+            }
 
-        error404.style.display = 'none';
-        error404.classList.remove('fadeIn');
+            error404.style.display = 'none';
+            error404.classList.remove('fadeIn');
 
 
-        const imagem = document.querySelector('.clima-container img');
-        const temperatura = document.querySelector('.clima-container .temperatura');
-        const descricao = document.querySelector('.clima-container .descricao');
-        const humidade = document.querySelector('.clima-detalhes .humidade span');
-        const vento = document.querySelector('.clima-detalhes .vento span');
+            const imagem = document.querySelector('.clima-container img');
+            const temperatura = document.querySelector('.clima-container .temperatura');
+            const descricao = document.querySelector('.clima-container .descricao');
+            const humidade = document.querySelector('.clima-detalhes .humidade span');
+            const vento = document.querySelector('.clima-detalhes .vento span');
 
-        switch (json.weather[0].main){
-            case 'Clear':
-                imagem.src = 'images/limpo.png';
-                break;
-                
-            case 'Rain':
-                imagem.src = 'images/chuva.png';
-                break;
+            switch (json.weather[0].main) {
+                case 'Clear':
+                    imagem.src = 'img/limpo.png';
+                    break;
 
-            case 'Snow':
-                imagem.src = 'images/neve.png';
-                break;
+                case 'Rain':
+                    imagem.src = 'img/chuva.png';
+                    break;
 
-            case 'Clouds':
-                imagem.src = 'images/nuvens.png';
-                break;
+                case 'Snow':
+                    imagem.src = 'img/neve.png';
+                    break;
 
-            case 'Haze':
-                imagem.src = 'images/nublado.png';
-                break;
+                case 'Clouds':
+                    imagem.src = 'img/nuvens.png';
+                    break;
 
-            default:
-                imagem.src = '';
-        }
+                case 'Haze':
+                    imagem.src = 'img/nublado.png';
+                    break;
 
-        temperatura.innerHTML = '${parseInt(json.main.temp)}<span>ºC</span>';
-        descricao.innerHTML = '${json.weather[0].description}';
-        humidade.innerHTML = '${json.main.humidity}%';
-        vento.innerHTML = '${parseInt(json.wind.speed)}Km/h';
+                default:
+                    imagem.src = '';
+            }
 
-        climaBox.style.display = '';
-        climaDetalhes.style.display ='';
-        climaBox.classList.add('fadeIn');
-        climaDetalhes.classList.add('fadeIn');
-        container.style.height = '590px';
+            temperatura.innerHTML = `${parseInt(json.main.temp)}<span>ºC</span>`;
+            descricao.innerHTML = `${json.weather[0].description}`;
+            humidade.innerHTML = `${json.main.humidity}%`;
+            vento.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
 
-    })
-    
+            climaBox.style.display = '';
+            climaDetalhes.style.display = '';
+            climaBox.classList.add('fadeIn');
+            climaDetalhes.classList.add('fadeIn');
+            container.style.height = '590px';
+
+        })
+
 });
